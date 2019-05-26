@@ -1,0 +1,28 @@
+query {
+  user(login: "todays-mitsui") {
+    login
+    name
+    bio
+    bioHTML
+    avatarUrl(size: 300)
+    repositories(first: 2, orderBy: {field: UPDATED_AT, direction: DESC}) {
+      totalCount
+      nodes {
+        name
+        description
+        descriptionHTML
+        url
+        homepageUrl
+        primaryLanguage {
+          id
+          name
+        }
+        commitComments {
+          totalCount
+        }
+        createdAt
+        updatedAt
+      }
+    }
+  }
+}
