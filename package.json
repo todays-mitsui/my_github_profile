@@ -13,7 +13,9 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "@nuxtjs/apollo": "^4.0.0-rc6",
     "cross-env": "^5.2.0",
+    "graphql-tag": "^2.10.1",
     "nuxt": "^2.4.0",
     "nuxt-buefy": "^0.3.2",
     "ts-node": "^8.1.1"
