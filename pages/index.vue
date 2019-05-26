@@ -1,22 +1,36 @@
 <template>
   <section class="section">
-    <section class="hero">
-      <div class="hero-body">
-        <div class="container">
-          <div class="columns">
-            <div class="column is-one-quarter">
-              <img :src="avatarUrl" :alt="login" />
-            </div>
+    <div class="columns">
+      <div class="column is-one-quarter">
+        <figure class="image is-square">
+          <img :src="avatarUrl" :alt="login" />
+        </figure>
+      </div>
 
-            <div class="column">
-              <h1 class="title">{{ name }}</h1>
-              <h2 class="subtitle">{{ login }}</h2>
-              <article v-html="bioHTML"></article>
-            </div>
-          </div>
+      <div class="column">
+        <h1 class="title">{{ name }}</h1>
+        <h2 class="subtitle">{{ login }}</h2>
+        <article>{{ bio }}</article>
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <h2 class="subtitle">Repogitories</h2>
+
+        <div class="list is-hoverable">
+          <a
+            v-for="repo in repositories"
+            :key="repo.name"
+            class="list-item"
+            :href="repo.url"
+            target="_blank"
+          >
+            {{ repo.name }}
+          </a>
         </div>
       </div>
-    </section>
+    </div>
   </section>
 </template>
 
@@ -25,7 +39,15 @@ import { mapState, mapActions } from 'vuex'
 
 export default {
   computed: {
-    ...mapState(['login', 'name', 'avatarUrl', 'bio', 'bioHTML'])
+    ...mapState([
+      'login',
+      'name',
+      'avatarUrl',
+      'bio',
+      'bioHTML',
+      'repositoryCount',
+      'repositories'
+    ])
   },
 
   mounted() {
@@ -37,3 +59,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.columns:not(:first-child) {
+  margin-top: 30px;
+}
+</style>
