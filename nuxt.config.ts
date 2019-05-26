@@ -1,6 +1,8 @@
 import NuxtConfiguration from '@nuxt/config'
 import pkg from './package.json'
 
+require('dotenv').config()
+
 const config: NuxtConfiguration = {
   mode: 'universal',
 
@@ -37,8 +39,19 @@ const config: NuxtConfiguration = {
    */
   modules: [
     // Doc: https://buefy.github.io/#/documentation
-    'nuxt-buefy'
+    'nuxt-buefy',
+    '@nuxtjs/dotenv',
+    '@nuxtjs/apollo'
   ],
+
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: 'https://api.github.com/graphql',
+        getAuth: () => `Bearer ${process.env.GITHUB_API_TOKEN}`
+      }
+    }
+  },
 
   /*
    ** Build configuration
