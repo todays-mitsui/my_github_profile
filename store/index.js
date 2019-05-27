@@ -14,8 +14,6 @@ export const state = () => {
 
 export const mutations = {
   fetchUserData(state, { user }) {
-    console.log(user)
-
     state.login = user.login
     state.name = user.name
     state.avatarUrl = user.avatarUrl
@@ -33,7 +31,6 @@ export const actions = {
     client
       .query({ query: fetchUserData })
       .then(({ data }) => {
-        console.log(data)
         commit('fetchUserData', data)
       })
       .catch(err => {
