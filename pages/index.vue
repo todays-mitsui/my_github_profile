@@ -16,7 +16,7 @@
 
     <div class="columns">
       <div class="column">
-        <h2 class="subtitle">Repogitories</h2>
+        <h2 class="subtitle">Repogitories ({{ repositoryCount }})</h2>
 
         <div class="list is-hoverable">
           <a
@@ -26,7 +26,13 @@
             :href="repo.url"
             target="_blank"
           >
-            {{ repo.name }}
+            <p class="title is-5">
+              {{ repo.name }}
+              <b-tag v-if="repo.primaryLanguage" type="is-primary">{{
+                repo.primaryLanguage.name
+              }}</b-tag>
+            </p>
+            <p class="subtitle is-6">{{ repo.description }}</p>
           </a>
         </div>
       </div>
