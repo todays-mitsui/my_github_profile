@@ -28,9 +28,11 @@
           >
             <p class="title is-5">
               {{ repo.name }}
-              <b-tag v-if="repo.primaryLanguage" type="is-primary">{{
-                repo.primaryLanguage.name
-              }}</b-tag>
+              <b-tag
+                v-if="repo.primaryLanguage"
+                :style="`background-color: ${repo.primaryLanguage.color}`"
+                >{{ repo.primaryLanguage.name }}</b-tag
+              >
             </p>
             <p class="subtitle is-6">{{ repo.description }}</p>
           </a>
@@ -69,5 +71,9 @@ export default {
 <style scoped>
 .columns:not(:first-child) {
   margin-top: 30px;
+}
+
+.tag {
+  color: #fff;
 }
 </style>

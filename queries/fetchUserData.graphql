@@ -16,6 +16,7 @@ query {
         primaryLanguage {
           id
           name
+          color
         }
         commitComments {
           totalCount
