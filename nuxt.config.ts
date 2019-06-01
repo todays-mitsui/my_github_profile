@@ -47,8 +47,7 @@ const config: NuxtConfiguration = {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: 'https://api.github.com/graphql',
-        getAuth: () => `Bearer ${process.env.GITHUB_API_TOKEN}`
+        httpEndpoint: 'https://api.github.com/graphql'
       }
     }
   },

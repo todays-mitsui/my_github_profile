@@ -25,7 +25,9 @@ export const mutations = {
 }
 
 export const actions = {
-  fetchUserData({ commit }) {
+  async fetchUserData({ commit }) {
+    await this.app.$apolloHelpers.onLogin(process.env.GITHUB_API_TOKEN)
+
     const client = this.app.apolloProvider.defaultClient
 
     client
