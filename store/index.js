@@ -30,13 +30,12 @@ export const actions = {
 
     const client = this.app.apolloProvider.defaultClient
 
-    client
-      .query({ query: fetchUserData })
-      .then(({ data }) => {
-        commit('fetchUserData', data)
-      })
-      .catch(err => {
-        console.error(err)
-      })
+    try {
+      const { data } = await client.query({ query: fetchUserData })
+
+      commit('fetchUserData', data)
+    } catch (err) {
+      console.error(err)
+    }
   }
 }
